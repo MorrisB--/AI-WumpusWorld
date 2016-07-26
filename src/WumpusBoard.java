@@ -1,5 +1,3 @@
-package wumpus;
-
 import java.util.Random;
 
 public class WumpusBoard {

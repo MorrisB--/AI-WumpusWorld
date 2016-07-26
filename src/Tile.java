@@ -1,5 +1,3 @@
-package wumpus;
-
 import java.util.ArrayList;
 
 public class Tile {
