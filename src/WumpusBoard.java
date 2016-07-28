@@ -158,35 +158,26 @@ board[1][1].A=true;
 		 */
 		// Also do not need ==true when its working
 		if (board[i][j].B == true || board[i][j].S == true) {
-			System.out.println("Entered dangerous or stench");
 			// The if statements below can be combined once its working
 			// Checking the tile above
 			if (i - 1 >= 0) {
-				System.out.println("Should be marking as dangerous");
-
 				if (board[i - 1][j].V == false)
 					board[i - 1][j].D = true;
 			}
 			// Checking the tile to the right
 			if (j + 1 < board[i].length) {
-				System.out.println("Should be marking as dangerous");
-
 				if (board[i][j + 1].V == false)
 					board[i][j + 1].D = true;
 			}
 
 			// Checking the tile below
 			if (i + 1 < board.length) {
-				System.out.println("Should be marking as dangerous");
-
 				if (board[i + 1][j].V == false)
 					board[i + 1][j].D = true;
 			}
 
 			// Checking the tile to the left
 			if (j - 1 >= 0) {
-				System.out.println("Should be marking as dangerous");
-
 				if (board[i][j - 1].V == false)
 					board[i][j - 1].D = true;
 			}
