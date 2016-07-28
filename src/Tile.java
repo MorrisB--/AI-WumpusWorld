@@ -53,7 +53,7 @@ public class Tile {
 			t += "B";
 		}
 		if(this.D){
-			t+= "D;";
+			t+= "D";
 		}
 		if(this.G){
 			t += "G";
