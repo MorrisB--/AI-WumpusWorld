@@ -137,12 +137,16 @@ board[1][1].A=true;
 	
 	public void Algorithm(){
 		
+		board[1][1].D = false;
+		
 		// Finding the agent
 		int i = 0, j = 0;
-		for (i = 0; i < board.length; i++)
-			for (j = 0; j < board[i].length; j++)
-				if (board[i][j].A == true)
-					break;
+		for (int a = 0; a < board.length; a++)
+			for (int b = 0; b < board[a].length; b++)
+				if (board[a][b].A == true) {
+					i = a;
+					j = b;
+				}
 
 		// Mark current tile as OK and visited
 		board[i][j].V = true;
@@ -154,26 +158,38 @@ board[1][1].A=true;
 		 */
 		// Also do not need ==true when its working
 		if (board[i][j].B == true || board[i][j].S == true) {
+			System.out.println("Entered dangerous or stench");
 			// The if statements below can be combined once its working
 			// Checking the tile above
-			if (i - 1 >= 0)
+			if (i - 1 >= 0) {
+				System.out.println("Should be marking as dangerous");
+
 				if (board[i - 1][j].V == false)
 					board[i - 1][j].D = true;
-
+			}
 			// Checking the tile to the right
-			if (j + 1 < board[i].length)
+			if (j + 1 < board[i].length) {
+				System.out.println("Should be marking as dangerous");
+
 				if (board[i][j + 1].V == false)
-					board[i][j - +1].D = true;
+					board[i][j + 1].D = true;
+			}
 
 			// Checking the tile below
-			if (i + 1 < board.length)
+			if (i + 1 < board.length) {
+				System.out.println("Should be marking as dangerous");
+
 				if (board[i + 1][j].V == false)
 					board[i + 1][j].D = true;
+			}
 
 			// Checking the tile to the left
-			if (j - 1 >= 0)
+			if (j - 1 >= 0) {
+				System.out.println("Should be marking as dangerous");
+
 				if (board[i][j - 1].V == false)
 					board[i][j - 1].D = true;
+			}
 
 		}
 
@@ -188,7 +204,7 @@ board[1][1].A=true;
 
 			// Checking the tile to the right
 			if (j + 1 < board[i].length)
-				board[i][j - +1].OK = true;
+				board[i][j + 1].OK = true;
 
 			// Checking the tile below
 			if (i + 1 < board.length)

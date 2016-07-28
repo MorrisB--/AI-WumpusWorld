@@ -52,6 +52,9 @@ public class Tile {
 		if(this.B){
 			t += "B";
 		}
+		if(this.D){
+			t+= "D;";
+		}
 		if(this.G){
 			t += "G";
 		}

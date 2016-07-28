@@ -9,5 +9,19 @@ public class Run {
 		wb.Algorithm();
 		wb.PrintBoard();
 
+		wb.Algorithm();
+		wb.PrintBoard();
+		
+		wb.Algorithm();
+		wb.PrintBoard();
+		
+		wb.Algorithm();
+		wb.PrintBoard();
+		
+		wb.Algorithm();
+		wb.PrintBoard();
+		
+		wb.Algorithm();
+		wb.PrintBoard();
 	}
 }
