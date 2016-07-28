@@ -107,26 +107,24 @@ public class WumpusBoard {
 	public void MoveAgent(int x, int y){ 
 		// Moves agent to the tile at [x,y]. Has to be adjacent to the agent tile.
 		// Print out all the moves made by the agent.
-		//
-		//
+board[1][1].A=true;
+		
+		
 		points--;
 	}
 	
 	public void AgentDied(){
 		// This method is called when the agent comes in contact with the wumpus or falls into a pit. 
-		//Game is over
-		points -= 1000;
-		
-		
+		// Game is over
+		points -= 1000;	
 	}
 	
 	public void ShootArrow(int x, int y){
+		// OPTIONAL
 		// Shoots the arrow towards the tile at [x,y]. [x,y] should be adjacent to the agent tile.
 		// Once the arrow is shot, it will traverse every tile on its path.
 		// If it hits the wumpus, deadWumpus becomes true and the agent doesn't have to worry about the W anymore.
 		points -= 10;
-		
-		
 	}
 	
 	public void FlagOK(Tile t){
@@ -137,4 +135,104 @@ public class WumpusBoard {
 		t.V = true;
 	}
 	
+	public void Algorithm(){
+		
+		// Finding the agent
+		int i = 0, j = 0;
+		for (i = 0; i < board.length; i++)
+			for (j = 0; j < board[i].length; j++)
+				if (board[i][j].A == true)
+					break;
+
+		// Mark current tile as OK and visited
+		board[i][j].V = true;
+		board[i][j].OK = true;
+
+		/*
+		 * If there is a stench or a breeze mark adjacent tiles as D
+		 * (dangerous), ONLY IF, they have not been visited.
+		 */
+		// Also do not need ==true when its working
+		if (board[i][j].B == true || board[i][j].S == true) {
+			// The if statements below can be combined once its working
+			// Checking the tile above
+			if (i - 1 >= 0)
+				if (board[i - 1][j].V == false)
+					board[i - 1][j].D = true;
+
+			// Checking the tile to the right
+			if (j + 1 < board[i].length)
+				if (board[i][j + 1].V == false)
+					board[i][j - +1].D = true;
+
+			// Checking the tile below
+			if (i + 1 < board.length)
+				if (board[i + 1][j].V == false)
+					board[i + 1][j].D = true;
+
+			// Checking the tile to the left
+			if (j - 1 >= 0)
+				if (board[i][j - 1].V == false)
+					board[i][j - 1].D = true;
+
+		}
+
+		/*
+		 * If there is not a breeze or a stench then we know that the ones
+		 * around (even if we marked them as dangerous as the past, are safe.
+		 */
+		else {
+			// Checking the tile above
+			if (i - 1 >= 0)
+				board[i - 1][j].OK = true;
+
+			// Checking the tile to the right
+			if (j + 1 < board[i].length)
+				board[i][j - +1].OK = true;
+
+			// Checking the tile below
+			if (i + 1 < board.length)
+				board[i + 1][j].OK = true;
+
+			// Checking the tile to the left
+			if (j - 1 >= 0)
+				board[i][j - 1].OK = true;
+		}
+
+		/*
+		 * Moving the agent
+		 */
+
+		// Checking the tile above
+		if (i - 1 >= 0) {
+			if (board[i - 1][j].V == false && board[i - 1][j].D == false) {
+				board[i][j].A = false;
+				board[i - 1][j].A = true;
+			}
+		}
+		// Checking the tile to the right
+		else if (j + 1 < board[i].length) {
+			if (board[i][j + 1].V == false && board[i][j + 1].D == false) {
+				board[i][j].A = false;
+				board[i][j + 1].A = true;
+			}
+		}
+		// Checking the tile below
+		else if (i + 1 < board.length) {
+			if (board[i + 1][j].V == false && board[i + 1][j].D == false) {
+				board[i][j].A = false;
+				board[i + 1][j].A = true;
+			}
+		}
+		// Checking the tile to the left
+		else if (j - 1 >= 0) {
+			if (board[i][j - 1].V == false && board[i][j - 1].D == false) {
+				board[i][j].A = false;
+				board[i][j - 1].A = true;
+			}
+		}
+		
+		
+	}
+
 }

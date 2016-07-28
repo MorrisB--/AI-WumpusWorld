@@ -5,5 +5,9 @@ public class Run {
 		WumpusBoard wb = new WumpusBoard();
 		wb.InitializeBoard();
 		wb.PrintBoard();
+		
+		wb.Algorithm();
+		wb.PrintBoard();
+
 	}
 }
