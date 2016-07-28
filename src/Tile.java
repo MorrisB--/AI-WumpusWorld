@@ -73,7 +73,7 @@ public class Tile {
 		if(this.OK){
 			t += "k";
 		}
-		if(!this.A && !this.B && !this.G && !this.OK && !this.P && !this.S && !this.V && !this.W )
+		if(!this.A && !this.B && !this.D && !this.G && !this.OK && !this.P && !this.S && !this.V && !this.W )
 			t += "X";
 		if(t.length() == 1)
 			t = " " + t + " ";
