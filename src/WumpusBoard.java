@@ -142,8 +142,6 @@ public class WumpusBoard {
 
 	public void Algorithm() {
 
-		board[1][1].D = false;
-
 		// Finding the agent
 		int i = 0, j = 0;
 		for (int a = 0; a < board.length; a++)
