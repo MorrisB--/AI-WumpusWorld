@@ -251,40 +251,44 @@ public class WumpusBoard {
 		 * not been executed, and it is time to move to a dangerous location.
 		 */
 
-		// THIS IS NOT WORKING BECAUSE IT NEEDS TO CHECK BOTH IF STATEMENTS AT
-		// THE SAME TIME
 		if (board[i][j].A) {
 
 			// Checking the tile above
-			if (i - 1 >= 0) {
-				System.out.println("Entered");
+			if (i - 1 >= 0 && board[i - 1][j].V == true && board[i - 1][j].D == false) {
+				System.out.println("Entered if1");
+				
+				// REDUNDANT SECOND IF, TAKE IT OUT ONCE ITS WORKING
 				if (board[i - 1][j].V == true && board[i - 1][j].D == false) {
 					board[i][j].A = false;
 					board[i - 1][j].A = true;
+					System.out.println("Entered if12");
 				}
 			}
 			// Checking the tile to the right
-			else if (j + 1 < board[i].length) {
-				System.out.println("Entered");
+			else if (j + 1 < board[i].length && board[i][j + 1].V == true && board[i][j + 1].D == false) {
+				System.out.println("Entered if2");
 				if (board[i][j + 1].V == true && board[i][j + 1].D == false) {
 					board[i][j].A = false;
 					board[i][j + 1].A = true;
+					System.out.println("Entered22");
 				}
 			}
 			// Checking the tile below
-			else if (i + 1 < board.length) {
-				System.out.println("Entered");
+			else if (i + 1 < board.length && board[i + 1][j].V == true && board[i + 1][j].D == false) {
+				System.out.println("Entered if3");
 				if (board[i + 1][j].V == true && board[i + 1][j].D == false) {
 					board[i][j].A = false;
 					board[i + 1][j].A = true;
+					System.out.println("Entered if32");
 				}
 			}
 			// Checking the tile to the left
-			else if (j - 1 >= 0) {
-				System.out.println("Entered");
+			else if (j - 1 >= 0 && board[i][j - 1].V == true && board[i][j - 1].D == false) {
+				System.out.println("Entered if4");
 				if (board[i][j - 1].V == true && board[i][j - 1].D == false) {
 					board[i][j].A = false;
 					board[i][j - 1].A = true;
+					System.out.println("Entered if 42");
 				}
 			}
 		}
