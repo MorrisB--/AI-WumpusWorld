@@ -215,8 +215,9 @@ public class WumpusBoard {
 		 * Moving the agent
 		 */
 
+		// It is ok for the agent to move if the tile is marked as dangerous but it is marked as OK
 		// Checking the tile above
-		if (i - 1 >= 0 && board[i - 1][j].V == false && board[i - 1][j].D == false) {
+		if (i - 1 >= 0 && board[i - 1][j].V == false && (board[i - 1][j].D == false || board[i - 1][j].OK == true)) {
 			// REDUNDANT IF STATEMENTS REMOVE WHEN FIXED
 			if (board[i - 1][j].V == false && board[i - 1][j].D == false) {
 				board[i][j].A = false;
@@ -224,21 +225,21 @@ public class WumpusBoard {
 			}
 		}
 		// Checking the tile to the right
-		else if (j + 1 < board[i].length && board[i][j + 1].V == false && board[i][j + 1].D == false) {
+		else if (j + 1 < board[i].length && board[i][j + 1].V == false && (board[i][j + 1].D == false || board[i][j + 1].OK == true)) {
 			if (board[i][j + 1].V == false && board[i][j + 1].D == false) {
 				board[i][j].A = false;
 				board[i][j + 1].A = true;
 			}
 		}
 		// Checking the tile below
-		else if (i + 1 < board.length && board[i + 1][j].V == false && board[i + 1][j].D == false) {
+		else if (i + 1 < board.length && board[i + 1][j].V == false && (board[i + 1][j].D == false || board[i + 1][j].OK == true)) {
 			if (board[i + 1][j].V == false && board[i + 1][j].D == false) {
 				board[i][j].A = false;
 				board[i + 1][j].A = true;
 			}
 		}
 		// Checking the tile to the left
-		else if (j - 1 >= 0 && board[i][j - 1].V == false && board[i][j - 1].D == false) {
+		else if (j - 1 >= 0 && board[i][j - 1].V == false && (board[i][j - 1].D == false || board[i][j - 1].OK == true)) {
 			if (board[i][j - 1].V == false && board[i][j - 1].D == false) {
 				board[i][j].A = false;
 				board[i][j - 1].A = true;
