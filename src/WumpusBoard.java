@@ -159,31 +159,31 @@ public class WumpusBoard {
 
 		/*
 		 * If there is a stench or a breeze mark adjacent tiles as D
-		 * (dangerous), ONLY IF, they have not been visited.
+		 * (dangerous), ONLY IF, they have not been visited AND its not marked as ok.
 		 */
 		// Also do not need ==true when its working
 		if (board[i][j].B == true || board[i][j].S == true) {
 			// The if statements below can be combined once its working
 			// Checking the tile above
 			if (i - 1 >= 0) {
-				if (board[i - 1][j].V == false)
+				if (board[i - 1][j].V == false && board[i - 1][j].OK == false)
 					board[i - 1][j].D = true;
 			}
 			// Checking the tile to the right
 			if (j + 1 < board[i].length) {
-				if (board[i][j + 1].V == false)
+				if (board[i][j + 1].V == false && board[i][j + 1].OK == false)
 					board[i][j + 1].D = true;
 			}
 
 			// Checking the tile below
 			if (i + 1 < board.length) {
-				if (board[i + 1][j].V == false)
+				if (board[i + 1][j].V == false && board[i + 1][j].OK == false)
 					board[i + 1][j].D = true;
 			}
 
 			// Checking the tile to the left
 			if (j - 1 >= 0) {
-				if (board[i][j - 1].V == false)
+				if (board[i][j - 1].V == false && board[i][j - 1].OK == false)
 					board[i][j - 1].D = true;
 			}
 
@@ -216,28 +216,29 @@ public class WumpusBoard {
 		 */
 
 		// Checking the tile above
-		if (i - 1 >= 0) {
+		if (i - 1 >= 0 && board[i - 1][j].V == false && board[i - 1][j].D == false) {
+			// REDUNDANT IF STATEMENTS REMOVE WHEN FIXED
 			if (board[i - 1][j].V == false && board[i - 1][j].D == false) {
 				board[i][j].A = false;
 				board[i - 1][j].A = true;
 			}
 		}
 		// Checking the tile to the right
-		else if (j + 1 < board[i].length) {
+		else if (j + 1 < board[i].length && board[i][j + 1].V == false && board[i][j + 1].D == false) {
 			if (board[i][j + 1].V == false && board[i][j + 1].D == false) {
 				board[i][j].A = false;
 				board[i][j + 1].A = true;
 			}
 		}
 		// Checking the tile below
-		else if (i + 1 < board.length) {
+		else if (i + 1 < board.length && board[i + 1][j].V == false && board[i + 1][j].D == false) {
 			if (board[i + 1][j].V == false && board[i + 1][j].D == false) {
 				board[i][j].A = false;
 				board[i + 1][j].A = true;
 			}
 		}
 		// Checking the tile to the left
-		else if (j - 1 >= 0) {
+		else if (j - 1 >= 0 && board[i][j - 1].V == false && board[i][j - 1].D == false) {
 			if (board[i][j - 1].V == false && board[i][j - 1].D == false) {
 				board[i][j].A = false;
 				board[i][j - 1].A = true;
