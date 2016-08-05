@@ -253,6 +253,7 @@ public class WumpusBoard {
 
 		// DO DANGEROUS STUFF
 		// MAYBE THIS SHOULD BE 8
+		
 		if(moves>9){
 			if(board[i][j].A){
 				// MOVE TO A DANGEROUS TILE IF THERE IS ONE
