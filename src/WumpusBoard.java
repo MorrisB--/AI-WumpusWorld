@@ -261,7 +261,7 @@ public class WumpusBoard {
 				
 				// First move to dangerous tiles that aren't visited
 				// Checking the top tile
-				if(i-1>= 0 && board[i-1][j].D && !board[i-1][j].V){
+				if(i-1>= 0 && board[i-1][j].D && !board[i-1][j].V && Math.random() > 0.3){
 					System.out.println("DANGEROUS MOVE!");
 					board[i][j].A = false;
 					board[i-1][j].A = true;
@@ -275,7 +275,7 @@ public class WumpusBoard {
 						System.out.println("Fell in a pit!");
 				}
 				// Checking the right tile
-				else if(j+1< board.length && board[i][j+1].D && !board[i][j+1].V){
+				else if(j+1< board.length && board[i][j+1].D && !board[i][j+1].V && Math.random() > 0.3){
 					System.out.println("DANGEROUS MOVE!");
 					board[i][j].A = false;
 					board[i][j+1].A = true;
@@ -289,7 +289,7 @@ public class WumpusBoard {
 						System.out.println("Fell in a pit!");
 				}
 				// Checking the tile below
-				else if(i+1< board[i].length && board[i+1][j].D && !board[i+1][j].V){
+				else if(i+1< board[i].length && board[i+1][j].D && !board[i+1][j].V && Math.random() > 0.3){
 					System.out.println("DANGEROUS MOVE!");
 					board[i][j].A = false;
 					board[i+1][j].A = true;
@@ -303,7 +303,7 @@ public class WumpusBoard {
 						System.out.println("Fell in a pit!");
 				}
 				// Checking the tile to the left
-				else if(j-1>= 0 && board[i][j-1].D && !board[i][j-1].V){
+				else if(j-1>= 0 && board[i][j-1].D && !board[i][j-1].V && Math.random() > 0.3){
 					System.out.println("DANGEROUS MOVE!");
 					board[i][j].A = false;
 					board[i][j-1].A = true;
@@ -320,7 +320,7 @@ public class WumpusBoard {
 				// Now check dangerous tiles that are visited
 				
 				// Checking the top tile
-				else if(i-1>= 0 && board[i-1][j].D /*&& !board[i-1][j].V*/){
+				else if(i-1>= 0 && board[i-1][j].D  && Math.random() > 0.3){
 					System.out.println("DANGEROUS MOVE!");
 					board[i][j].A = false;
 					board[i-1][j].A = true;
@@ -334,7 +334,7 @@ public class WumpusBoard {
 						System.out.println("Fell in a pit!");
 				}
 				// Checking the right tile
-				else if(j+1< board.length && board[i][j+1].D/* && !board[i][j+1].V*/){
+				else if(j+1< board.length && board[i][j+1].D && Math.random() > 0.3){
 					System.out.println("DANGEROUS MOVE!");
 					board[i][j].A = false;
 					board[i][j+1].A = true;
@@ -348,7 +348,7 @@ public class WumpusBoard {
 						System.out.println("Fell in a pit!");
 				}
 				// Checking the tile below
-				else if(i+1< board[i].length && board[i+1][j].D/* && !board[i+1][j].V*/){
+				else if(i+1< board[i].length && board[i+1][j].D && Math.random() > 0.3){
 					System.out.println("DANGEROUS MOVE!");
 					board[i][j].A = false;
 					board[i+1][j].A = true;
@@ -362,7 +362,7 @@ public class WumpusBoard {
 						System.out.println("Fell in a pit!");
 				}
 				// Checking the tile to the left
-				else if(j-1>= 0 && board[i][j-1].D/* && !board[i][j-1].V*/){
+				else if(j-1>= 0 && board[i][j-1].D && Math.random() > 0.3){
 					System.out.println("DANGEROUS MOVE!");
 					board[i][j].A = false;
 					board[i][j-1].A = true;
@@ -384,7 +384,7 @@ public class WumpusBoard {
 		if (board[i][j].A) {
 
 			// Checking the tile above
-			if (i - 1 >= 0 && board[i - 1][j].V == true && (board[i - 1][j].D == false || board[i - 1][j].OK)) {
+			if (i - 1 >= 0 && board[i - 1][j].V == true && (board[i - 1][j].D == false || board[i - 1][j].OK)  && Math.random() > 0.3) {
 				System.out.println("Entered if1");
 				
 				// REDUNDANT SECOND IF, TAKE IT OUT ONCE ITS WORKING
@@ -395,7 +395,7 @@ public class WumpusBoard {
 				}
 			}
 			// Checking the tile to the right
-			else if (j + 1 < board[i].length && board[i][j + 1].V == true && (board[i][j + 1].D == false || board[i][j+1].OK)) {
+			else if (j + 1 < board[i].length && board[i][j + 1].V == true && (board[i][j + 1].D == false || board[i][j+1].OK) && Math.random() > 0.3) {
 				System.out.println("Entered if2");
 				if (board[i][j + 1].V == true && board[i][j + 1].D == false) {
 					board[i][j].A = false;
@@ -404,7 +404,7 @@ public class WumpusBoard {
 				}
 			}
 			// Checking the tile below
-			else if (i + 1 < board.length && board[i + 1][j].V == true && (board[i + 1][j].D == false || board[i+1][j].OK)) {
+			else if (i + 1 < board.length && board[i + 1][j].V == true && (board[i + 1][j].D == false || board[i+1][j].OK) && Math.random() > 0.3) {
 				System.out.println("Entered if3");
 				if (board[i + 1][j].V == true && board[i + 1][j].D == false) {
 					board[i][j].A = false;
@@ -413,7 +413,7 @@ public class WumpusBoard {
 				}
 			}
 			// Checking the tile to the left
-			else if (j - 1 >= 0 && board[i][j - 1].V == true && (board[i][j - 1].D == false|| board[i][j-1].OK)) {
+			else if (j - 1 >= 0 && board[i][j - 1].V == true && (board[i][j - 1].D == false|| board[i][j-1].OK) && Math.random() > 0.3) {
 				System.out.println("Entered if4");
 				if (board[i][j - 1].V == true && board[i][j - 1].D == false) {
 					board[i][j].A = false;
