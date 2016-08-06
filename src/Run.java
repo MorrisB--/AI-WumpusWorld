@@ -6,17 +6,13 @@ public class Run {
 		WumpusBoard wb = new WumpusBoard();
 		wb.InitializeBoard();
 		wb.PrintBoard();
-		
-		int moves =0;
-		while(!wb.Algorithm(moves)){
-			System.out.println(moves);
+
+		int moves = 0;
+		while (!wb.Algorithm(moves)) {
 			moves++;
 			if (moves > 11)
 				moves = 0;
 			wb.PrintBoard();
 		}
-		
-		System.out.println("Done");
-
 	}
 }
