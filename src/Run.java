@@ -8,12 +8,15 @@ public class Run {
 		wb.PrintBoard();
 		
 		int moves =0;
-		while(wb.Algorithm(moves)){
+		while(!wb.Algorithm(moves)){
+			System.out.println(moves);
 			moves++;
-			if (moves > 9)
+			if (moves > 10)
 				moves = 0;
 			wb.PrintBoard();
 		}
+		
+		System.out.println("Done");
 
 	}
 }

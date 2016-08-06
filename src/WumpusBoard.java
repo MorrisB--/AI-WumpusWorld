@@ -254,16 +254,19 @@ public class WumpusBoard {
 		// DO DANGEROUS STUFF
 		// MAYBE THIS SHOULD BE 8
 		
-		if(moves>9){
+		if(moves>8){
+			System.out.println("MOVED INTO DANGEROUS STUFF!");
 			if(board[i][j].A){
 				// MOVE TO A DANGEROUS TILE IF THERE IS ONE
+				
+				// First move to dangerous tiles that aren't visited
 				// Checking the top tile
 				if(i-1>= 0 && board[i-1][j].D && !board[i-1][j].V){
 					System.out.println("DANGEROUS MOVE!");
 					board[i][j].A = false;
 					board[i-1][j].A = true;
-					// If there is a breeze or stench mark that tile as OK
-					if (board[i-1][j].B || board[i-1][j].S)
+					// If there is a breeze or stench mark that tile as OK AND no pit or wumpus
+					if (board[i-1][j].B || board[i-1][j].S && (!board[i-1][j].P && !board[i-1][j].W))
 						board[i-1][j].OK = true;
 					// If there is a pit or Wumpus, print
 					if (board[i-1][j].W)
@@ -272,12 +275,12 @@ public class WumpusBoard {
 						System.out.println("Fell in a pit!");
 				}
 				// Checking the right tile
-				if(j+1< board.length && board[i][j+1].D && !board[i][j+1].V){
+				else if(j+1< board.length && board[i][j+1].D && !board[i][j+1].V){
 					System.out.println("DANGEROUS MOVE!");
 					board[i][j].A = false;
 					board[i][j+1].A = true;
-					// If there is a breeze or stench mark that tile as OK
-					if (board[i][j+1].B || board[i][j+1].S)
+					// If there is a breeze or stench mark that tile as OK AND no pit or wumpus
+					if (board[i][j+1].B || board[i][j+1].S && (!board[i][j+1].P && !board[i][j+1].W))
 						board[i][j+1].OK = true;
 					// If there is a pit or Wumpus, print
 					if (board[i][j+1].W)
@@ -286,12 +289,12 @@ public class WumpusBoard {
 						System.out.println("Fell in a pit!");
 				}
 				// Checking the tile below
-				if(i+1< board[i].length && board[i+1][j].D && !board[i+1][j].V){
+				else if(i+1< board[i].length && board[i+1][j].D && !board[i+1][j].V){
 					System.out.println("DANGEROUS MOVE!");
 					board[i][j].A = false;
 					board[i+1][j].A = true;
-					// If there is a breeze or stench mark that tile as OK
-					if (board[i+1][j].B || board[i+1][j].S)
+					// If there is a breeze or stench mark that tile as OK AND no pit or wumpus
+					if (board[i+1][j].B || board[i+1][j].S && (!board[i+1][j].P && !board[i+1][j].W))
 						board[i+1][j].OK = true;
 					// If there is a pit or Wumpus, print
 					if (board[i+1][j].W)
@@ -300,12 +303,71 @@ public class WumpusBoard {
 						System.out.println("Fell in a pit!");
 				}
 				// Checking the tile to the left
-				if(j-1>= 0 && board[i][j-1].D && !board[i][j-1].V){
+				else if(j-1>= 0 && board[i][j-1].D && !board[i][j-1].V){
 					System.out.println("DANGEROUS MOVE!");
 					board[i][j].A = false;
 					board[i][j-1].A = true;
-					// If there is a breeze or stench mark that tile as OK
-					if (board[i][j-1].B || board[i][j-1].S)
+					// If there is a breeze or stench mark that tile as OK AND no pit or wumpus
+					if (board[i][j-1].B || board[i][j-1].S && (!board[i+1][j].P && !board[i+1][j].W))
+						board[i][j-1].OK = true;
+					// If there is a pit or Wumpus, print
+					if (board[i][j-1].W)
+						System.out.println("Hit the Wumpus!");
+					if (board[i][j-1].P)
+						System.out.println("Fell in a pit!");
+				}	
+				
+				// Now check dangerous tiles that are visited
+				
+				// Checking the top tile
+				else if(i-1>= 0 && board[i-1][j].D /*&& !board[i-1][j].V*/){
+					System.out.println("DANGEROUS MOVE!");
+					board[i][j].A = false;
+					board[i-1][j].A = true;
+					// If there is a breeze or stench mark that tile as OK AND no pit or wumpus
+					if (board[i-1][j].B || board[i-1][j].S && (!board[i-1][j].P && !board[i-1][j].W))
+						board[i-1][j].OK = true;
+					// If there is a pit or Wumpus, print
+					if (board[i-1][j].W)
+						System.out.println("Hit the Wumpus!");
+					if (board[i-1][j].P)
+						System.out.println("Fell in a pit!");
+				}
+				// Checking the right tile
+				else if(j+1< board.length && board[i][j+1].D/* && !board[i][j+1].V*/){
+					System.out.println("DANGEROUS MOVE!");
+					board[i][j].A = false;
+					board[i][j+1].A = true;
+					// If there is a breeze or stench mark that tile as OK AND no pit or wumpus
+					if (board[i][j+1].B || board[i][j+1].S && (!board[i][j+1].P && !board[i][j+1].W))
+						board[i][j+1].OK = true;
+					// If there is a pit or Wumpus, print
+					if (board[i][j+1].W)
+						System.out.println("Hit the Wumpus!");
+					if (board[i][j+1].P)
+						System.out.println("Fell in a pit!");
+				}
+				// Checking the tile below
+				else if(i+1< board[i].length && board[i+1][j].D/* && !board[i+1][j].V*/){
+					System.out.println("DANGEROUS MOVE!");
+					board[i][j].A = false;
+					board[i+1][j].A = true;
+					// If there is a breeze or stench mark that tile as OK AND no pit or wumpus
+					if (board[i+1][j].B || board[i+1][j].S && (!board[i+1][j].P && !board[i+1][j].W))
+						board[i+1][j].OK = true;
+					// If there is a pit or Wumpus, print
+					if (board[i+1][j].W)
+						System.out.println("Hit the Wumpus!");
+					if (board[i+1][j].P)
+						System.out.println("Fell in a pit!");
+				}
+				// Checking the tile to the left
+				else if(j-1>= 0 && board[i][j-1].D/* && !board[i][j-1].V*/){
+					System.out.println("DANGEROUS MOVE!");
+					board[i][j].A = false;
+					board[i][j-1].A = true;
+					// If there is a breeze or stench mark that tile as OK AND no pit or wumpus
+					if (board[i][j-1].B || board[i][j-1].S && (!board[i+1][j].P && !board[i+1][j].W))
 						board[i][j-1].OK = true;
 					// If there is a pit or Wumpus, print
 					if (board[i][j-1].W)
@@ -313,6 +375,8 @@ public class WumpusBoard {
 					if (board[i][j-1].P)
 						System.out.println("Fell in a pit!");
 				}
+				
+				
 			}
 		}
 		// DO SAFE STUFF
@@ -320,7 +384,7 @@ public class WumpusBoard {
 		if (board[i][j].A) {
 
 			// Checking the tile above
-			if (i - 1 >= 0 && board[i - 1][j].V == true && board[i - 1][j].D == false) {
+			if (i - 1 >= 0 && board[i - 1][j].V == true && (board[i - 1][j].D == false || board[i - 1][j].OK)) {
 				System.out.println("Entered if1");
 				
 				// REDUNDANT SECOND IF, TAKE IT OUT ONCE ITS WORKING
@@ -331,7 +395,7 @@ public class WumpusBoard {
 				}
 			}
 			// Checking the tile to the right
-			else if (j + 1 < board[i].length && board[i][j + 1].V == true && board[i][j + 1].D == false) {
+			else if (j + 1 < board[i].length && board[i][j + 1].V == true && (board[i][j + 1].D == false || board[i][j+1].OK)) {
 				System.out.println("Entered if2");
 				if (board[i][j + 1].V == true && board[i][j + 1].D == false) {
 					board[i][j].A = false;
@@ -340,7 +404,7 @@ public class WumpusBoard {
 				}
 			}
 			// Checking the tile below
-			else if (i + 1 < board.length && board[i + 1][j].V == true && board[i + 1][j].D == false) {
+			else if (i + 1 < board.length && board[i + 1][j].V == true && (board[i + 1][j].D == false || board[i+1][j].OK)) {
 				System.out.println("Entered if3");
 				if (board[i + 1][j].V == true && board[i + 1][j].D == false) {
 					board[i][j].A = false;
@@ -349,7 +413,7 @@ public class WumpusBoard {
 				}
 			}
 			// Checking the tile to the left
-			else if (j - 1 >= 0 && board[i][j - 1].V == true && board[i][j - 1].D == false) {
+			else if (j - 1 >= 0 && board[i][j - 1].V == true && (board[i][j - 1].D == false|| board[i][j-1].OK)) {
 				System.out.println("Entered if4");
 				if (board[i][j - 1].V == true && board[i][j - 1].D == false) {
 					board[i][j].A = false;
@@ -360,7 +424,26 @@ public class WumpusBoard {
 		}
 		} 
 	
-
+/*
+ * Return true or false if the agent hit the gold.
+ */
+		
+		// Finding the Agent
+		for (int a = 0; a < board.length; a++)
+			for (int b = 0; b < board[a].length; b++)
+				if (board[a][b].A == true) {
+					i = a;
+					j = b;
+				}
+		
+		// Checking if Agent hit the gold
+		
+		if (board[i][j].G){
+			System.out.println("Found the gold!");
+			return true;
+		}
+		
+		return false;
 	}
 
 }
