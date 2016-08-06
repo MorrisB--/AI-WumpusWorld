@@ -266,7 +266,7 @@ public class WumpusBoard {
 					board[i][j].A = false;
 					board[i-1][j].A = true;
 					// If there is a breeze or stench mark that tile as OK AND no pit or wumpus
-					if (board[i-1][j].B || board[i-1][j].S && (!board[i-1][j].P && !board[i-1][j].W))
+					if ((board[i-1][j].B || board[i-1][j].S) && (!board[i-1][j].P && !board[i-1][j].W))
 						board[i-1][j].OK = true;
 					// If there is a pit or Wumpus, print
 					if (board[i-1][j].W)
@@ -280,7 +280,7 @@ public class WumpusBoard {
 					board[i][j].A = false;
 					board[i][j+1].A = true;
 					// If there is a breeze or stench mark that tile as OK AND no pit or wumpus
-					if (board[i][j+1].B || board[i][j+1].S && (!board[i][j+1].P && !board[i][j+1].W))
+					if ((board[i][j+1].B || board[i][j+1].S) && (!board[i][j+1].P && !board[i][j+1].W))
 						board[i][j+1].OK = true;
 					// If there is a pit or Wumpus, print
 					if (board[i][j+1].W)
@@ -294,7 +294,7 @@ public class WumpusBoard {
 					board[i][j].A = false;
 					board[i+1][j].A = true;
 					// If there is a breeze or stench mark that tile as OK AND no pit or wumpus
-					if (board[i+1][j].B || board[i+1][j].S && (!board[i+1][j].P && !board[i+1][j].W))
+					if ((board[i+1][j].B || board[i+1][j].S) && (!board[i+1][j].P && !board[i+1][j].W))
 						board[i+1][j].OK = true;
 					// If there is a pit or Wumpus, print
 					if (board[i+1][j].W)
@@ -308,7 +308,7 @@ public class WumpusBoard {
 					board[i][j].A = false;
 					board[i][j-1].A = true;
 					// If there is a breeze or stench mark that tile as OK AND no pit or wumpus
-					if (board[i][j-1].B || board[i][j-1].S && (!board[i][j-1].P && !board[i][j-1].W))
+					if ((board[i][j-1].B || board[i][j-1].S) && (!board[i][j-1].P && !board[i][j-1].W))
 						board[i][j-1].OK = true;
 					// If there is a pit or Wumpus, print
 					if (board[i][j-1].W)
@@ -325,7 +325,7 @@ public class WumpusBoard {
 					board[i][j].A = false;
 					board[i-1][j].A = true;
 					// If there is a breeze or stench mark that tile as OK AND no pit or wumpus
-					if (board[i-1][j].B || board[i-1][j].S && (!board[i-1][j].P && !board[i-1][j].W))
+					if ((board[i-1][j].B || board[i-1][j].S) && (!board[i-1][j].P && !board[i-1][j].W))
 						board[i-1][j].OK = true;
 					// If there is a pit or Wumpus, print
 					if (board[i-1][j].W)
@@ -339,7 +339,7 @@ public class WumpusBoard {
 					board[i][j].A = false;
 					board[i][j+1].A = true;
 					// If there is a breeze or stench mark that tile as OK AND no pit or wumpus
-					if (board[i][j+1].B || board[i][j+1].S && (!board[i][j+1].P && !board[i][j+1].W))
+					if ((board[i][j+1].B || board[i][j+1].S) && (!board[i][j+1].P && !board[i][j+1].W))
 						board[i][j+1].OK = true;
 					// If there is a pit or Wumpus, print
 					if (board[i][j+1].W)
@@ -353,7 +353,7 @@ public class WumpusBoard {
 					board[i][j].A = false;
 					board[i+1][j].A = true;
 					// If there is a breeze or stench mark that tile as OK AND no pit or wumpus
-					if (board[i+1][j].B || board[i+1][j].S && (!board[i+1][j].P && !board[i+1][j].W))
+					if ((board[i+1][j].B || board[i+1][j].S) && (!board[i+1][j].P && !board[i+1][j].W))
 						board[i+1][j].OK = true;
 					// If there is a pit or Wumpus, print
 					if (board[i+1][j].W)
@@ -367,7 +367,7 @@ public class WumpusBoard {
 					board[i][j].A = false;
 					board[i][j-1].A = true;
 					// If there is a breeze or stench mark that tile as OK AND no pit or wumpus
-					if (board[i][j-1].B || board[i][j-1].S && (!board[i+1][j].P && !board[i+1][j].W))
+					if ((board[i][j-1].B || board[i][j-1].S) && (!board[i+1][j].P && !board[i+1][j].W))
 						board[i][j-1].OK = true;
 					// If there is a pit or Wumpus, print
 					if (board[i][j-1].W)

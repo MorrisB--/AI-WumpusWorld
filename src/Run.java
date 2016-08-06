@@ -11,7 +11,7 @@ public class Run {
 		while(!wb.Algorithm(moves)){
 			System.out.println(moves);
 			moves++;
-			if (moves > 10)
+			if (moves > 11)
 				moves = 0;
 			wb.PrintBoard();
 		}
