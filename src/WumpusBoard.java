@@ -153,7 +153,7 @@ public class WumpusBoard {
 
 		// Mark current tile as OK and visited
 		board[i][j].V = true;
-		board[i][j].OK = true;
+		// board[i][j].OK = true;
 
 		/*
 		 * If there is a stench or a breeze mark adjacent tiles as D
@@ -193,19 +193,19 @@ public class WumpusBoard {
 		 */
 		else {
 			// Checking the tile above
-			if (i - 1 >= 0)
+			if (i - 1 >= 0 && (!board[i-1][j].P && !board[i-1][j].W))
 				board[i - 1][j].OK = true;
 
 			// Checking the tile to the right
-			if (j + 1 < board[i].length)
+			if (j + 1 < board[i].length && (!board[i][j+1].P && !board[i][j+1].W))
 				board[i][j + 1].OK = true;
 
 			// Checking the tile below
-			if (i + 1 < board.length)
+			if (i + 1 < board.length && (!board[i+1][j].P && !board[i+1][j].W))
 				board[i + 1][j].OK = true;
 
 			// Checking the tile to the left
-			if (j - 1 >= 0)
+			if (j - 1 >= 0 && (!board[i][j-1].P && !board[i][j-1].W))
 				board[i][j - 1].OK = true;
 		}
 
@@ -308,7 +308,7 @@ public class WumpusBoard {
 					board[i][j].A = false;
 					board[i][j-1].A = true;
 					// If there is a breeze or stench mark that tile as OK AND no pit or wumpus
-					if (board[i][j-1].B || board[i][j-1].S && (!board[i+1][j].P && !board[i+1][j].W))
+					if (board[i][j-1].B || board[i][j-1].S && (!board[i][j-1].P && !board[i][j-1].W))
 						board[i][j-1].OK = true;
 					// If there is a pit or Wumpus, print
 					if (board[i][j-1].W)
